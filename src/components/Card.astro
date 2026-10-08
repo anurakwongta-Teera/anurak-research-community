@@ -1,0 +1,31 @@
+---
+import { url } from '../lib/site';
+const { entry, section } = Astro.props;
+---
+
+<article class="card">
+  <div class="card-top">
+    <span class="eyebrow">{entry.data.category}</span>
+    <span aria-hidden="true">↗</span>
+  </div>
+  <h3>
+    <a href={url(`${section}/${entry.id}/`)}>{entry.data.title}</a>
+  </h3>
+  <p>{entry.data.summary}</p>
+  <div class="card-meta">
+    {entry.data.placeholder && (
+      <span class="badge">Illustrative placeholder</span>
+    )}
+    {entry.data.stage && <span class="badge stage">{entry.data.stage}</span>}
+    {entry.data.date && (
+      <time datetime={entry.data.date.toISOString()}>
+        {entry.data.date.toLocaleDateString('en-GB', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+          timeZone: 'UTC',
+        })}
+      </time>
+    )}
+  </div>
+</article>

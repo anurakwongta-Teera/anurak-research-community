@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+import { nav, site, url } from '../lib/site';
+const {
+  title = site.title,
+  description = 'Environmental and occupational health, community-based research, and practical laboratory innovation.',
+  active = '',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title === site.title ? title : `${title} | Anurak Wongta`}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#214e43" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#main">
+      Skip to content
+    </a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href={url()} aria-label="Anurak Wongta home">
+          <span class="monogram">
+            aw<span>·</span>
+          </span>
+          <span>
+            <strong>Anurak Wongta</strong>
+            <small>RESEARCH & COMMUNITY</small>
+          </span>
+        </a>
+        <details class="mobile-nav">
+          <summary>
+            Menu <span>＋</span>
+          </summary>
+          <nav aria-label="Mobile navigation">
+            {nav.map(([path, label]) => (
+              <a
+                href={url(path)}
+                aria-current={active === path ? 'page' : undefined}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+        </details>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          {nav.map(([path, label]) => (
+            <a
+              href={url(path)}
+              aria-current={active === path ? 'page' : undefined}
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer>
+      <div class="shell footer-grid">
+        <div>
+          <a class="footer-brand" href={url()}>
+            Anurak Wongta<span>Research & Community</span>
+          </a>
+          <p>Practical science. Real-world impact.</p>
+        </div>
+        <div>
+          <strong>Explore</strong>
+          <a href={url('research/')}>Research projects</a>
+          <a href={url('laboratory/')}>Laboratory & Innovation</a>
+          <a href={url('publications/')}>Publications</a>
+        </div>
+        <div>
+          <strong>Connect</strong>
+          <a href={url('about/')}>About me & team</a>
+          <a href={url('community/')}>Community engagement</a>
+          <a href={url('contact/')}>Contact & collaboration</a>
+        </div>
+      </div>
+      <div class="shell footer-bottom">
+        <span>© {new Date().getUTCFullYear()} Anurak Wongta</span>
+        <span>English · Thai content planned</span>
+        <span>Science in service of people.</span>
+      </div>
+    </footer>
+  </body>
+</html>

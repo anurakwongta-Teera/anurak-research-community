@@ -1,0 +1,60 @@
+---
+const { compact = false } = Astro.props;
+---
+
+<svg
+  class:list={['research-art', { compact }]}
+  viewBox="0 0 600 520"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Abstract illustration connecting laboratory measurement, landscape, and community"
+>
+  <defs>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" stroke="#fff" stroke-opacity=".09" />
+    </pattern>
+    <linearGradient id="land" x2="1" y2="1">
+      <stop stop-color="#afc7a0" />
+      <stop offset="1" stop-color="#617f65" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="520" rx="18" fill="#173f3b" />
+  <rect width="600" height="520" rx="18" fill="url(#grid)" />
+  <circle cx="465" cy="112" r="58" fill="#e8c996" />
+  <path d="M0 340Q130 185 280 325T600 245V520H0Z" fill="#456958" />
+  <path d="M0 408Q170 265 335 407T600 350V520H0Z" fill="url(#land)" />
+  <path
+    d="M250 520Q370 438 310 370T360 292"
+    stroke="#e4dfc7"
+    stroke-width="30"
+    opacity=".75"
+  />
+  <rect x="52" y="60" width="233" height="171" rx="12" fill="#f6f4eb" />
+  <circle cx="75" cy="83" r="4" fill="#638a69" />
+  <path d="M92 83H157" stroke="#9baaa0" stroke-width="5" />
+  <path d="M72 193H267M72 111V193" stroke="#cbd4cc" />
+  <path
+    d="M73 171H103L118 143L135 182L159 116L184 158H211L229 133L245 156H264"
+    stroke="#2b6755"
+    stroke-width="4"
+    stroke-linejoin="round"
+  />
+  <g stroke="#f5f1e4" stroke-width="7" stroke-linejoin="round">
+    <path d="M413 240V290L373 359Q363 379 389 379H476Q501 379 490 359L450 290V240M402 240H461" />
+    <path d="M391 336H472" />
+  </g>
+  <g fill="#e8c996">
+    <circle cx="115" cy="354" r="16" />
+    <circle cx="167" cy="373" r="13" />
+  </g>
+  <path
+    d="M91 413V398Q115 371 139 398V422M148 431V412Q167 392 186 412V440"
+    stroke="#f3f0e3"
+    stroke-width="13"
+    stroke-linecap="round"
+  />
+  <path d="M306 81H348M327 60V102" stroke="#abc5ab" stroke-width="2" />
+  <circle cx="525" cy="437" r="24" stroke="#d4dfca" />
+  <path d="M514 437H536M525 426V448" stroke="#d4dfca" />
+</svg>
