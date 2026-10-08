@@ -1,0 +1,95 @@
+---
+import { entries, sectionPaths } from '../lib/content';
+import { nav, url } from '../lib/site';
+const pages = nav.map(([path, title]) => ({ title, href: url(path) }));
+for (const collection of [
+  'projects',
+  'innovation',
+  'publications',
+  'news',
+] as const) {
+  for (const entry of await entries(collection))
+    pages.push({
+      title: entry.data.title,
+      href: url(`${sectionPaths[collection]}/${entry.id}/`),
+    });
+}
+---
+
+<button
+  class="search-toggle"
+  aria-label="Search website"
+  aria-haspopup="dialog"
+>
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    aria-hidden="true"
+  >
+    <circle cx="10" cy="10" r="7.5" />
+    <path d="m16 16 6 6" />
+  </svg>
+</button>
+<dialog class="site-search" aria-labelledby="search-title">
+  <div class="search-heading">
+    <h2 id="search-title">Search this website</h2>
+    <button class="search-close" aria-label="Close search">
+      ×
+    </button>
+  </div>
+  <label for="site-query">Page, research topic, or news</label>
+  <input
+    id="site-query"
+    type="search"
+    placeholder="Try laboratory or community"
+    autocomplete="off"
+  />
+  <p class="search-count" role="status"></p>
+  <ul>
+    {pages.map((page) => (
+      <li data-search-title={page.title.toLowerCase()}>
+        <a href={page.href}>{page.title}</a>
+      </li>
+    ))}
+  </ul>
+</dialog>
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('.site-search')!;
+  const input = document.querySelector<HTMLInputElement>('#site-query')!;
+  const items = Array.from(dialog.querySelectorAll<HTMLLIElement>('li'));
+  const status = dialog.querySelector<HTMLElement>('.search-count')!;
+  function filter() {
+    const query = input.value.trim().toLowerCase();
+    let count = 0;
+    for (const item of items) {
+      item.hidden = !item.dataset.searchTitle!.includes(query);
+      if (!item.hidden) count++;
+    }
+    status.textContent = count
+      ? `${count} results`
+      : 'No results. Try another topic.';
+  }
+  document.querySelector('.search-toggle')!.addEventListener('click', () => {
+    dialog.showModal();
+    filter();
+    input.focus();
+  });
+  dialog
+    .querySelector('.search-close')!
+    .addEventListener('click', () => dialog.close());
+  input.addEventListener('input', filter);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) {
+      const rect = dialog.getBoundingClientRect();
+      if (
+        event.clientX < rect.left ||
+        event.clientX > rect.right ||
+        event.clientY < rect.top ||
+        event.clientY > rect.bottom
+      )
+        dialog.close();
+    }
+  });
+</script>

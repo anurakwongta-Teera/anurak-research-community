@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import { pages, listings } from '../data/pages';
+import { entries } from '../lib/content';
+import { site, url } from '../lib/site';
+export function getStaticPaths() {
+  return [...Object.keys(pages), ...Object.keys(listings)].map((page) => ({
+    params: { page },
+  }));
+}
+const key = Astro.params.page!;
+const listing = listings[key as keyof typeof listings];
+const page = pages[key as keyof typeof pages];
+const info = listing || page;
+const items = listing ? await entries(listing.collection) : [];
+---
+
+<Layout title={info.title} description={info.description} active={`${key}/`}>
+  <section class="page-header shell">
+    <p class="eyebrow">{info.eyebrow}</p>
+    <p class="page-label">{info.title}</p>
+    <h1>{info.intro}</h1>
+    <p class="lede">{info.description}</p>
+  </section>
+  <section class="shell section page-content">
+    {key === 'laboratory' && (
+      <>
+        <div class="three-grid stages">
+          {[
+            [
+              'Concept',
+              'An early idea or proposed approach. No performance claims.',
+            ],
+            [
+              'Work in progress',
+              'Development or testing is underway. Results remain provisional.',
+            ],
+            [
+              'Validated outcome',
+              'Evidence and validation scope are documented and linked.',
+            ],
+          ].map(([title, text], i) => (
+            <div>
+              <span class="eyebrow">0{i + 1}</span>
+              <h2>{title}</h2>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+        <div class="notice">
+          <strong>Prototype development & validation</strong>
+          <p>
+            Performance, limitations, and intended use must be documented before
+            an item is labeled a validated outcome. The example below is a
+            concept placeholder, not a tested technology.
+          </p>
+        </div>
+      </>
+    )}
+    {listing &&
+      (items.length ? (
+        <>
+          <div class="section-heading">
+            <h2>
+              {key === 'research'
+                ? 'Research portfolio'
+                : key === 'laboratory'
+                  ? 'Innovation notebook'
+                  : 'Browse entries'}
+            </h2>
+            <span>
+              {items.length} {items.length === 1 ? 'entry' : 'entries'}
+            </span>
+          </div>
+          <div class="two-grid">
+            {items.map((entry) => (
+              <Card entry={entry} section={key} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div class="empty-state">
+          <span class="eyebrow">VERIFIED CONTENT FORTHCOMING</span>
+          <h2>
+            {key === 'publications'
+              ? 'The publication list is being prepared.'
+              : 'New entries will appear here.'}
+          </h2>
+          <p>
+            {key === 'publications'
+              ? 'Bibliographic details, author lists, publication dates, and DOI links will be checked before they are listed.'
+              : 'Approved entries will be added following researcher review.'}
+          </p>
+          <a class="text-link" href={url('contact/')}>
+            Contact & collaboration →
+          </a>
+        </div>
+      ))}
+    {page && (
+      <div class="three-grid info-blocks">
+        {page.blocks.map(([heading, body]) => (
+          <article>
+            <h2>{heading}</h2>
+            <p>{body}</p>
+          </article>
+        ))}
+      </div>
+    )}
+    {key === 'about' && (
+      <div class="notice">
+        <strong>Profile photographs forthcoming</strong>
+        <p>
+          Clearly labeled temporary stock photographs illustrate this first
+          version. Researcher and team photographs will be added with
+          permission.
+        </p>
+      </div>
+    )}
+    {key === 'contact' && (
+      <div class="contact-panel">
+        <p class="eyebrow">CONTACT DETAILS</p>
+        <h2>
+          {site.email
+            ? 'Get in touch.'
+            : 'A verified contact channel is forthcoming.'}
+        </h2>
+        {site.email ? (
+          <a class="button" href={`mailto:${site.email}`}>
+            Email Anurak Wongta ↗
+          </a>
+        ) : (
+          <p>
+            Placeholder: an approved professional email address and
+            institutional profile will be added here. This site currently has no
+            contact form.
+          </p>
+        )}
+        <p>
+          Please do not include participant information, private research data,
+          or confidential documents in an initial inquiry.
+        </p>
+      </div>
+    )}
+  </section>
+</Layout>

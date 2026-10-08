@@ -1,0 +1,137 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Photo from '../components/Photo.astro';
+import AreaIcon from '../components/AreaIcon.astro';
+import { entries } from '../lib/content';
+import { url } from '../lib/site';
+import { home, areas } from '../data/home';
+import { projectPhotos, newsPhotos } from '../data/images';
+const projectOrder = [
+  'environmental-health',
+  'occupational-health',
+  'community-research',
+];
+const projects = (await entries('projects'))
+  .filter((e) => e.data.featured)
+  .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id))
+  .slice(0, 3);
+const newsOrder = [
+  'research-notes',
+  'laboratory-notes',
+  'community-activities',
+];
+const news = (await entries('news'))
+  .sort((a, b) => newsOrder.indexOf(a.id) - newsOrder.indexOf(b.id))
+  .slice(0, 3);
+---
+
+<Layout>
+  <div class="home reference-home">
+    <section class="photo-hero" aria-labelledby="hero-title">
+      <Photo name="fieldwork" class="hero-photo" eager />
+      <div class="hero-shade"></div>
+      <div class="shell hero-content">
+        <p class="eyebrow">{home.eyebrow}</p>
+        <h1 id="hero-title">
+          {home.title}
+          <span>{home.subtitle}</span>
+        </h1>
+        <p class="hero-description">{home.description}</p>
+        <div class="actions">
+          <a class="button" href={url('research/')}>
+            Explore Our Work <span>→</span>
+          </a>
+          <a class="button outline" href={url('about/')}>
+            About Me
+          </a>
+        </div>
+      </div>
+      <p class="hero-motto">
+        Science works best
+        <br />
+        when it reaches people.
+      </p>
+    </section>
+    <section class="focus-band" aria-label="Research focus areas">
+      <div class="shell core-overview">
+        {areas.map((area) => (
+          <a class="core-area" href={url(area.path)}>
+            <span class:list={['area-icon', area.icon]}>
+              <AreaIcon name={area.icon} />
+            </span>
+            <h2>{area.title}</h2>
+            <p>{area.description}</p>
+            <span aria-hidden="true" class="area-arrow">
+              →
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+    <div class="shell home-editorial">
+      <section class="featured-projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <h2 id="projects-title">Featured Projects</h2>
+          <a href={url('research/')}>View all projects →</a>
+        </div>
+        <p class="sample-note">
+          Illustrative topics · Project details await researcher verification.
+        </p>
+        <div class="project-grid">
+          {projects.map((entry) => (
+            <article class="project-card">
+              <Photo name={projectPhotos[entry.id]} class="project-image" />
+              <div class="project-copy">
+                <span class:list={['category-pill', projectPhotos[entry.id]]}>
+                  {entry.data.category}
+                </span>
+                <h3>
+                  <a href={url(`research/${entry.id}/`)}>{entry.data.title}</a>
+                </h3>
+                <p>{entry.data.summary}</p>
+                <a class="read-more" href={url(`research/${entry.id}/`)}>
+                  Read more →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section class="latest-news" aria-labelledby="news-title">
+        <div class="section-heading">
+          <h2 id="news-title">Latest News</h2>
+          <a href={url('news/')}>View all news →</a>
+        </div>
+        <p class="sample-note">
+          Sample entries · No events or results are claimed.
+        </p>
+        <div class="news-list">
+          {news.map((entry) => (
+            <article class="news-row">
+              <Photo name={newsPhotos[entry.id]} class="news-image" />
+              <div>
+                <span class="news-date">
+                  {entry.data.date
+                    ? entry.data.date.toLocaleDateString('en-GB', {
+                        timeZone: 'UTC',
+                      })
+                    : 'Date pending'}
+                </span>
+                <h3>
+                  <a href={url(`news/${entry.id}/`)}>{entry.data.title}</a>
+                </h3>
+                <p>{entry.data.summary}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+    <aside class="shell authenticity-note" id="photo-credits">
+      Temporary stock photography, not Anurak Wongta, his team, or verified
+      research activities. Authentic Northern Thailand fieldwork and community
+      photographs are pending. Source credits accompany every image;{' '}
+      <a href="https://www.pexels.com/license/">Pexels License</a>.
+    </aside>
+  </div>
+</Layout>
