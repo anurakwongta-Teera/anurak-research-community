@@ -20,7 +20,7 @@ npm test
 npm run preview
 ```
 
-Output is in `dist/`. No database, paid API, authentication, analytics, or runtime backend. System fonts, local CSS, and original SVG artwork avoid external font/image dependencies. The artwork is conceptual and depicts no real participant or finding.
+Output is in `dist/`. No database, paid API, authentication, analytics, or runtime backend. System fonts, local CSS, locally hosted licensed photographs, and original SVG icons avoid runtime external font/image dependencies. Photographs are clearly labeled temporary stock scenes, not the researcher's actual team or activities. Credits and replacement instructions are in [public/images/README.md](public/images/README.md).
 
 ## Architecture
 
@@ -49,6 +49,6 @@ Configuration follows the [Astro GitHub Pages guide](https://docs.astro.build/en
 
 ## Design and checks
 
-Forest green, deep blue, warm neutrals, serif editorial headings, responsive layouts, and original research-themed SVG illustration. Includes semantic landmarks, skip link, visible keyboard focus, native mobile menu, active navigation, canonical metadata, and no client JavaScript. English is complete; Thai architecture is prepared, with translations/routes deferred.
+Forest green, deep navy, white, sans-serif headings, a photographic fieldwork hero, three equally prominent core areas, image-led project/update cards, and dedicated laboratory/community sections. Includes semantic landmarks, skip link, visible keyboard focus, native mobile menu, active navigation, canonical metadata, and no client JavaScript. Existing Astro routes and collections are unchanged. English is complete; Thai architecture is prepared, with translations/routes deferred.
 
 `npm run check` validates Astro and TypeScript; `npm run build` validates collection schemas; `npm test` checks all required routes, internal links/assets, headings, language, and draft exclusion.

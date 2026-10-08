@@ -1,0 +1,31 @@
+---
+import { photos } from '../data/images';
+import { url } from '../lib/site';
+interface Props {
+  name: string;
+  class?: string;
+  eager?: boolean;
+}
+const { name, class: className, eager = false } = Astro.props;
+const photo = photos[name];
+---
+
+<figure class:list={['photo', className]}>
+  <img
+    src={url(photo.src)}
+    alt={photo.alt}
+    width={photo.width}
+    height={photo.height}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding="async"
+    style={{ '--photo-position': photo.position }}
+  />
+  <figcaption>
+    {photo.temporary && <span>Temporary stock photo · </span>}
+    <a href={photo.source}>
+      {photo.credit}
+      {photo.provider && ` / ${photo.provider}`}
+    </a>
+  </figcaption>
+</figure>

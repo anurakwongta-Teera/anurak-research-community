@@ -36,6 +36,21 @@ for (const file of files) {
     'Draft content leaked',
   );
   assert(!html.includes('undefined'), `${file}: undefined output`);
+  for (const [tag] of html.matchAll(/<img\b[^>]*>/g)) {
+    assert(
+      /alt="[^"]+"/.test(tag),
+      `${file}: image needs descriptive alt text`,
+    );
+    const source = tag.match(/src="([^"]+)"/)?.[1];
+    assert(source?.startsWith(base), `${file}: images must be hosted locally`);
+    const image = readFileSync(join('dist', source.slice(base.length)));
+    assert(image.length > 100, `${file}: empty image: ${source}`);
+    if (source.endsWith('.jpg'))
+      assert(
+        image[0] === 255 && image[1] === 216,
+        `${file}: invalid JPEG: ${source}`,
+      );
+  }
   for (const [, value] of html.matchAll(/(?:href|src)="([^"#]+)"/g)) {
     if (/^(https?:|mailto:|data:)/.test(value)) continue;
     assert(value.startsWith(base), `${file}: missing base prefix: ${value}`);

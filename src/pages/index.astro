@@ -1,9 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Illustration from '../components/Illustration.astro';
 import Card from '../components/Card.astro';
+import Photo from '../components/Photo.astro';
+import AreaIcon from '../components/AreaIcon.astro';
 import { entries } from '../lib/content';
 import { url } from '../lib/site';
+import { home, areas } from '../data/home';
+import { projectPhotos, newsPhotos } from '../data/images';
 const projects = (await entries('projects'))
   .filter((e) => e.data.featured)
   .slice(0, 3);
@@ -11,187 +14,171 @@ const news = (await entries('news')).slice(0, 2);
 ---
 
 <Layout>
-  <section class="hero shell">
-    <div class="hero-copy">
-      <p class="eyebrow">
-        <span class="dot"></span> RESEARCH WITH PEOPLE, FOR PEOPLE
-      </p>
-      <h1>
-        Practical science.
-        <br />
-        <em>Real-world impact.</em>
-      </h1>
-      <p class="hero-description">
-        Connecting environmental and occupational health, practical laboratory
-        innovation, and community-based research.
-      </p>
-      <div class="actions">
-        <a class="button" href={url('research/')}>
-          Explore the research <span>↗</span>
-        </a>
-        <a class="text-link" href={url('contact/')}>
-          Let’s collaborate <span>→</span>
-        </a>
+  <div class="home">
+    <section class="photo-hero" aria-labelledby="hero-title">
+      <Photo name="fieldwork" class="hero-photo" eager />
+      <div class="hero-shade"></div>
+      <div class="shell hero-content">
+        <p class="eyebrow">{home.eyebrow}</p>
+        <h1 id="hero-title">
+          {home.title}
+          <span>{home.subtitle}</span>
+        </h1>
+        <p class="hero-tagline">{home.tagline}</p>
+        <p class="hero-description">{home.description}</p>
+        <div class="actions">
+          <a class="button" href={url('research/')}>
+            Explore our work <span>→</span>
+          </a>
+          <a class="button outline" href={url('about/')}>
+            About me & team
+          </a>
+        </div>
       </div>
-      <div class="hero-note">
-        <span class="line"></span>
-        <p>
-          Anurak Wongta
-          <br />
-          <strong>Academic researcher & research project leader</strong>
-        </p>
+    </section>
+    <div class="photo-disclosure">
+      <div class="shell">
+        Photography is temporary and illustrative. People, equipment, and
+        activities shown are not Anurak Wongta or his research team.{' '}
+        <a href="#photo-credits">Photo credits ↓</a>
       </div>
     </div>
-    <figure class="hero-visual">
-      <Illustration />
-      <figcaption>
-        <span>01 / FROM LABORATORY TO COMMUNITY</span>
-        <span>Concept illustration</span>
-      </figcaption>
-    </figure>
-  </section>
-  <section class="focus-strip">
-    <div class="shell">
-      <span>ENVIRONMENT & HEALTH</span>
-      <span aria-hidden="true">✳</span>
-      <span>LABORATORY INNOVATION</span>
-      <span aria-hidden="true">✳</span>
-      <span>COMMUNITY CONNECTION</span>
-    </div>
-  </section>
-  <section class="section shell">
-    <div class="section-intro">
-      <p class="eyebrow">A CONNECTED APPROACH</p>
-      <h2>
-        Good questions.
-        <br />
-        Meaningful possibilities.
-      </h2>
-      <p>
-        Research connects careful measurement with the realities of everyday
-        life. This work brings together three complementary areas of focus.
-      </p>
-    </div>
-    <div class="three-grid pillars">
-      {[
-        [
-          '01',
-          'Research',
-          'Understanding health in the places where people live and work.',
-          'research/',
-        ],
-        [
-          '02',
-          'Laboratory & Innovation',
-          'Developing practical methods with real-world use in mind.',
-          'laboratory/',
-        ],
-        [
-          '03',
-          'Community',
-          'Connecting scientific questions with community perspectives.',
-          'community/',
-        ],
-      ].map(([n, title, copy, path]) => (
-        <a class="pillar" href={url(path)}>
-          <span class="pillar-number">{n} /</span>
-          <h3>
-            {title} <span>↗</span>
-          </h3>
-          <p>{copy}</p>
+    <section class="core-overview shell" aria-label="Three core areas">
+      {areas.map((area) => (
+        <a class="core-area" href={url(area.path)}>
+          <span class:list={['area-icon', area.icon]}>
+            <AreaIcon name={area.icon} />
+          </span>
+          <div>
+            <h2>{area.title}</h2>
+            <p>{area.description}</p>
+            <span class="text-link">Explore area →</span>
+          </div>
         </a>
       ))}
-    </div>
-  </section>
-  <section class="section soft">
-    <div class="shell">
+    </section>
+    <section class="section soft">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">RESEARCH IN FOCUS</p>
+            <h2>Featured projects</h2>
+          </div>
+          <a class="text-link" href={url('research/')}>
+            View all projects →
+          </a>
+        </div>
+        <p class="section-note">
+          Illustrative portfolio topics · Verified project details will be added
+          after researcher review.
+        </p>
+        <div class="three-grid">
+          {projects.map((entry) => (
+            <Card
+              entry={entry}
+              section="research"
+              photo={projectPhotos[entry.id]}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+    <section class="section shell photo-lab">
+      <Photo name="laboratory" class="lab-photograph" />
+      <div class="lab-copy">
+        <p class="eyebrow">LABORATORY & INNOVATION</p>
+        <h2>
+          Practical science.
+          <br />
+          <span>Beyond the laboratory.</span>
+        </h2>
+        <p>
+          Explore low-cost health measurement, assay development, and portable
+          technologies with real-world application in mind.
+        </p>
+        <p>
+          From prototype development to validation, each idea is presented with
+          a clear status and appropriate evidence.
+        </p>
+        <div class="innovation-stages">
+          <span>
+            01 <strong>Concept</strong>
+          </span>
+          <span>
+            02 <strong>Work in progress</strong>
+          </span>
+          <span>
+            03 <strong>Validated outcome</strong>
+          </span>
+        </div>
+        <a class="button navy" href={url('laboratory/')}>
+          Explore laboratory innovation →
+        </a>
+      </div>
+    </section>
+    <section class="community-feature">
+      <div class="shell community-layout">
+        <div class="community-copy">
+          <p class="eyebrow">PEOPLE · ENVIRONMENT · HEALTH</p>
+          <h2>
+            Connecting research
+            <br />
+            with everyday life.
+          </h2>
+          <p>
+            Community-based research brings local context into the scientific
+            conversation. This space will share approved engagement activities
+            and accessible research resources.
+          </p>
+          <a class="button" href={url('community/')}>
+            Community engagement →
+          </a>
+        </div>
+        <Photo name="community" class="community-photograph" />
+      </div>
+    </section>
+    <section class="section shell">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">RESEARCH IN FOCUS</p>
-          <h2>Questions worth exploring.</h2>
+          <p class="eyebrow">NEWS & ACTIVITIES</p>
+          <h2>Recent updates</h2>
         </div>
-        <a class="text-link" href={url('research/')}>
-          All projects →
+        <a class="text-link" href={url('news/')}>
+          View all updates →
         </a>
       </div>
       <p class="section-note">
-        Illustrative topics below show the intended research portfolio. Verified
-        project details will be added after review.
+        Sample entries awaiting verified news. No completed activities or
+        milestones are claimed.
       </p>
-      <div class="three-grid">
-        {projects.map((entry) => (
-          <Card entry={entry} section="research" />
+      <div class="two-grid updates">
+        {news.map((entry) => (
+          <Card entry={entry} section="news" photo={newsPhotos[entry.id]} />
         ))}
       </div>
-    </div>
-  </section>
-  <section class="section shell lab-feature">
-    <div class="lab-panel">
-      <span class="eyebrow">THE INNOVATION PATHWAY</span>
-      <div class="pathway">
-        <span>
-          01 <strong>Concept</strong>
-        </span>
-        <span>↓</span>
-        <span>
-          02 <strong>Development</strong>
-        </span>
-        <span>↓</span>
-        <span>
-          03 <strong>Validation</strong>
-        </span>
-      </div>
-      <p>Clear stages. Evidence at every step.</p>
-    </div>
-    <div>
-      <p class="eyebrow">LABORATORY & INNOVATION</p>
-      <h2>
-        Practical tools.
-        <br />A wider reach.
-      </h2>
-      <p>
-        Explore low-cost measurement, assay development, and portable
-        technologies designed around the needs of field and community settings.
-      </p>
-      <p>
-        Every innovation is labeled by its stage, so an early idea is clearly
-        distinguished from an evidence-supported outcome.
-      </p>
-      <a class="text-link" href={url('laboratory/')}>
-        Inside the laboratory →
-      </a>
-    </div>
-  </section>
-  <section class="section shell">
-    <div class="section-heading">
+    </section>
+    <section class="shell collaboration">
       <div>
-        <p class="eyebrow">NOTES & ACTIVITIES</p>
-        <h2>Latest updates.</h2>
+        <p class="eyebrow">LET’S COLLABORATE</p>
+        <h2>
+          A shared question.
+          <br />A place to begin.
+        </h2>
+        <p>For research, practical innovation, and community collaboration.</p>
       </div>
-      <a class="text-link" href={url('news/')}>
-        All updates →
+      <a class="button light" href={url('contact/')}>
+        Start a conversation →
       </a>
-    </div>
-    <div class="two-grid">
-      {news.map((entry) => (
-        <Card entry={entry} section="news" />
-      ))}
-    </div>
-  </section>
-  <section class="shell collaboration">
-    <div>
-      <p class="eyebrow">LET’S CONNECT</p>
-      <h2>
-        Better questions begin
-        <br />
-        with a conversation.
-      </h2>
+    </section>
+    <aside id="photo-credits" class="shell photo-credits">
+      <strong>Temporary photography</strong>
       <p>
-        For research ideas, practical innovation, and community collaboration.
+        Fieldwork: Alesia Gritsuk · Laboratory: Polina Tankilevitch · Community:
+        Anna Shvets. Individual source links accompany each image. Used under
+        the <a href="https://www.pexels.com/license/">Pexels License</a>.
+        Authentic team and activity photographs will replace these illustrative
+        images after permission and review.
       </p>
-    </div>
-    <a class="button light" href={url('contact/')}>
-      Explore collaboration ↗
-    </a>
-  </section>
+    </aside>
+  </div>
 </Layout>
