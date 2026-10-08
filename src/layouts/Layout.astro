@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import SiteSearch from '../components/SiteSearch.astro';
 import '../styles/visual-refresh.css';
 import { nav, site, url } from '../lib/site';
 const {
@@ -49,6 +50,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
           <span>
             <strong>Anurak Wongta</strong>
             <small>RESEARCH & COMMUNITY</small>
+            <span class="brand-descriptor">People · Environment · Health</span>
           </span>
         </a>
         <details class="mobile-nav">
@@ -76,39 +78,66 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
             </a>
           ))}
         </nav>
+        <span class="language-indicator">
+          <strong>EN</strong> |{' '}
+          <span title="Thai content planned" aria-label="Thai content planned">
+            TH
+          </span>
+        </span>
+        <SiteSearch />
         <a class="button header-cta" href={url('contact/')}>
-          Let’s collaborate ↗
+          Let’s Collaborate →
         </a>
       </div>
     </header>
     <main id="main">
       <slot />
     </main>
-    <footer>
-      <div class="shell footer-grid">
-        <div>
-          <a class="footer-brand" href={url()}>
-            Anurak Wongta<span>Research & Community</span>
-          </a>
-          <p>Practical science. Real-world impact.</p>
+    <footer class="reference-footer">
+      <svg
+        class="footer-mountains"
+        viewBox="0 0 1500 100"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M0 50 60 15 100 50 160 28 230 65 300 30 340 48 380 16 440 65 520 25 600 60 680 10 740 50 820 35 900 65 1000 15 1060 45 1120 20 1200 60 1300 30 1380 60 1460 20 1500 40V100H0Z"
+          fill="#0d3431"
+        />
+      </svg>
+      <div class="shell compact-footer">
+        <a class="brand footer-brand" href={url()}>
+          <svg
+            class="brand-leaf"
+            viewBox="0 0 42 54"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path d="M34 2C13 9 0 24 9 38c16 11 33-8 25-36Z" fill="#accd8b" />
+            <path
+              d="M7 52 29 12M17 34 11 24M22 24l9-3"
+              stroke="#174c43"
+              stroke-width="2.3"
+            />
+          </svg>
+          <span>
+            <strong>Anurak Wongta</strong>
+            <span>Research & Community</span>
+          </span>
+        </a>
+        <div class="footer-mission">
+          <p>Practical science. Healthier people. Stronger communities.</p>
+          <small>Practical science. Real-world impact.</small>
         </div>
-        <div>
-          <strong>Explore</strong>
-          <a href={url('research/')}>Research projects</a>
-          <a href={url('laboratory/')}>Laboratory & Innovation</a>
-          <a href={url('publications/')}>Publications</a>
+        <div class="footer-contact">
+          <nav aria-label="Profile and contact">
+            <a href={url('about/')}>Professional profile ↗</a>
+            <a href={url('contact/')}>Contact ✉</a>
+          </nav>
+          <small>
+            © {new Date().getUTCFullYear()} Anurak Wongta. All rights reserved.
+          </small>
         </div>
-        <div>
-          <strong>Connect</strong>
-          <a href={url('about/')}>About me & team</a>
-          <a href={url('community/')}>Community engagement</a>
-          <a href={url('contact/')}>Contact & collaboration</a>
-        </div>
-      </div>
-      <div class="shell footer-bottom">
-        <span>© {new Date().getUTCFullYear()} Anurak Wongta</span>
-        <span>English · Thai content planned</span>
-        <span>Science in service of people.</span>
       </div>
     </footer>
   </body>

@@ -1,7 +1,7 @@
 ---
-title: Community air quality monitoring
-summary: 'Sample update: a future space for approved air quality and respiratory health field notes.'
-category: Research notebook
+title: Simple health measurement development
+summary: 'Sample update: laboratory methods, prototype development, and validation notes will appear here.'
+category: Laboratory notes
 reviewStatus: approved
 placeholder: true
 featured: false

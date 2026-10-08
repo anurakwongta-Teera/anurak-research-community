@@ -1,6 +1,6 @@
 ---
-title: Community activities, thoughtfully documented
-summary: A future home for approved activity reports and community-facing resources.
+title: Community engagement activities
+summary: 'Sample update: approved knowledge-sharing activities and local discussions will be documented here.'
 category: Community notes
 reviewStatus: approved
 placeholder: true
@@ -9,8 +9,8 @@ featured: false
 
 ## Details awaiting verification
 
-This is an illustrative placeholder for the first website version. It does not describe a verified project, event, partnership, or research finding.
+This is an illustrative placeholder, not a verified project, event, partnership, or research finding. No dates or outcomes are claimed.
 
 ## Public documentation
 
-Add a researcher-approved summary, accurate dates, appropriate methods or activity details, and links to verified outputs. Do not include participant information or private research data.
+Replace this sample only after researcher approval with an accurate summary, appropriate methods or activity details, dates, and verified output links. Do not include participant information or private research data.

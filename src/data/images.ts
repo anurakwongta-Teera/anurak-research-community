@@ -11,20 +11,19 @@ export type Photo = {
 };
 export const photos: Record<string, Photo> = {
   fieldwork: {
-    src: 'images/temporary/fieldwork.jpg',
-    alt: 'Stock photograph of a scientist using a microscope at a table in a forest.',
-    credit: 'Alesia Gritsuk',
+    src: 'images/temporary/mountain-fieldwork.jpg',
+    alt: 'Temporary stock photograph of a backpacker viewed from behind overlooking green mountain valleys; not Anurak Wongta or a verified research activity.',
+    credit: 'Xuân Thống Trần',
     provider: 'Pexels',
     width: 1920,
-    height: 2560,
-    source:
-      'https://www.pexels.com/photo/woman-making-laboratory-tests-in-forest-5595612/',
-    position: '50% 55%',
+    height: 1282,
+    source: 'https://www.pexels.com/photo/man-carrying-a-backpack-13660339/',
+    position: '50% 32%',
     temporary: true,
   },
   laboratory: {
     src: 'images/temporary/laboratory.jpg',
-    alt: 'Stock photograph of a gloved scientist operating a laboratory meter beside sample tubes.',
+    alt: 'Temporary stock photograph of a gloved hand using a laboratory meter beside sample tubes.',
     credit: 'Polina Tankilevitch',
     provider: 'Pexels',
     width: 1200,
@@ -34,15 +33,15 @@ export const photos: Record<string, Photo> = {
     temporary: true,
   },
   community: {
-    src: 'images/temporary/community.jpg',
-    alt: 'Stock photograph of volunteers planting a tree together outdoors.',
-    credit: 'Anna Shvets',
+    src: 'images/temporary/village-community.jpg',
+    alt: 'Temporary stock photograph of residents gathering on a village street in Indonesia; not a research team activity.',
+    credit: 'Dio Alif Utomo',
     provider: 'Pexels',
     width: 1200,
-    height: 1800,
+    height: 800,
     source:
-      'https://www.pexels.com/photo/people-planting-plant-together-5029923/',
-    position: '50% 65%',
+      'https://www.pexels.com/photo/community-gathering-in-a-rural-village-street-36596582/',
+    position: '50% 62%',
     temporary: true,
   },
 };
@@ -54,4 +53,5 @@ export const projectPhotos: Record<string, string> = {
 export const newsPhotos: Record<string, string> = {
   'research-notes': 'fieldwork',
   'community-activities': 'community',
+  'laboratory-notes': 'laboratory',
 };

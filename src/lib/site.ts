@@ -10,7 +10,7 @@ export const nav = [
   ['', 'Home'],
   ['about/', 'About & team'],
   ['research/', 'Research'],
-  ['laboratory/', 'Laboratory'],
+  ['laboratory/', 'Laboratory & Innovation'],
   ['community/', 'Community'],
   ['publications/', 'Publications'],
   ['news/', 'News'],

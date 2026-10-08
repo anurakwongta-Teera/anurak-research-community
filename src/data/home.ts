@@ -1,37 +1,34 @@
 export const home = {
-  eyebrow: 'RESEARCH FOR HEALTHIER PEOPLE AND COMMUNITIES',
+  eyebrow: 'RESEARCH FOR A HEALTHIER TOMORROW',
   title: 'Anurak Wongta',
   subtitle: 'Research & Community',
   tagline: 'Practical science. Real-world impact.',
   description:
-    'Connecting environmental and occupational health research, practical laboratory innovation, and community perspectives.',
+    'Connecting environmental and occupational health research, practical laboratory innovation, and community engagement for real-world impact.',
 };
 export const areas = [
   {
     icon: 'research',
-    title: 'Research',
-    description:
-      'Environmental and occupational health in the places where people live and work.',
+    title: 'Environment & Occupational Health',
+    description: 'Air, climate, chemicals, and workplace exposures',
     path: 'research/',
-    photo: 'fieldwork',
-    detail: 'From real-world questions to careful measurement.',
   },
   {
     icon: 'laboratory',
     title: 'Laboratory & Innovation',
-    description:
-      'Practical methods, affordable measurement, and technologies for field settings.',
+    description: 'Simple, affordable tools for real-world health monitoring',
     path: 'laboratory/',
-    photo: 'laboratory',
-    detail: 'From laboratory methods to practical applications.',
   },
   {
     icon: 'community',
     title: 'Community Engagement',
-    description:
-      'Connecting scientific questions with local context and community perspectives.',
+    description: 'Working with local people for lasting impact',
     path: 'community/',
-    photo: 'community',
-    detail: 'From shared questions to accessible knowledge.',
+  },
+  {
+    icon: 'policy',
+    title: 'Evidence for Policy',
+    description: 'Turning research into practical solutions',
+    path: 'research/',
   },
 ];

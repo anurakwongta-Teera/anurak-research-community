@@ -49,6 +49,6 @@ Configuration follows the [Astro GitHub Pages guide](https://docs.astro.build/en
 
 ## Design and checks
 
-Forest green, deep navy, white, sans-serif headings, a photographic fieldwork hero, three equally prominent core areas, image-led project/update cards, and dedicated laboratory/community sections. Includes semantic landmarks, skip link, visible keyboard focus, native mobile menu, active navigation, canonical metadata, and no client JavaScript. Existing Astro routes and collections are unchanged. English is complete; Thai architecture is prepared, with translations/routes deferred.
+Forest green, deep navy, white, sans-serif headings, a panoramic photographic hero, four equal focus areas, three project cards beside a compact three-row news column, and a dark mountain-silhouette footer. Includes semantic landmarks, skip link, visible keyboard focus, native mobile menu, active navigation, canonical metadata, and a small local search dialog. Search indexes only approved English pages/entries at build time; it uses no API or backend. EN | TH is an indicator: Thai content is explicitly planned, not an active translation switch. Existing Astro routes and collection schemas are preserved; a third sample news entry has been added. English is complete; Thai architecture is prepared, with translations/routes deferred.
 
 `npm run check` validates Astro and TypeScript; `npm run build` validates collection schemas; `npm test` checks all required routes, internal links/assets, headings, language, and draft exclusion.

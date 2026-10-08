@@ -1,7 +1,7 @@
 ---
-title: Community perspectives on health
-summary: An illustrative space for research shaped by local context and shared questions.
-category: Community-based research
+title: Community health and occupational risk reduction
+summary: 'Illustrative topic: co-creating solutions with communities towards healthier livelihoods.'
+category: Community engagement
 reviewStatus: approved
 placeholder: true
 featured: true
@@ -9,8 +9,8 @@ featured: true
 
 ## Details awaiting verification
 
-This is an illustrative placeholder for the first website version. It does not describe a verified project, event, partnership, or research finding.
+This is an illustrative placeholder, not a verified project, event, partnership, or research finding. No dates or outcomes are claimed.
 
 ## Public documentation
 
-Add a researcher-approved summary, accurate dates, appropriate methods or activity details, and links to verified outputs. Do not include participant information or private research data.
+Replace this sample only after researcher approval with an accurate summary, appropriate methods or activity details, dates, and verified output links. Do not include participant information or private research data.
