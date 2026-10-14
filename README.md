@@ -54,3 +54,6 @@ Forest green, deep navy, white, sans-serif headings, a panoramic photographic he
 `npm run check` validates Astro and TypeScript; `npm run build` validates collection schemas; `npm test` checks all required routes, internal links/assets, headings, language, and draft exclusion.
 
 To review unapproved bibliography entries locally: `npm run build:preview`, then `npm run preview`. This mode shows a review banner and is never used by GitHub Actions. Standard production builds exclude drafts. See `docs/profile-publication-review.md` for source checks.
+
+
+Publication approval: On 14 October 2026, the researcher reviewed the revised content and explicitly authorized publication. All 40 verified journal records are now approved for production. Earlier draft-status descriptions above document the pre-approval review.

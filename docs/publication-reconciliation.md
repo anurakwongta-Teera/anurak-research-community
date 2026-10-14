@@ -68,3 +68,6 @@ All 40 records are drafts pending researcher approval. This audit also corrected
 | 2021 | Effectiveness of a Participatory Program on Pesticide Use Behavior and Blood Cholinesterase Levels in Chiang Mai Province, Northern Thailand | [10.1155/2021/6746367](https://doi.org/10.1155/2021/6746367) | Rechecked |
 | 2020 | Development of an Immunoassay for the Detection of Amyloid Beta 1‐42 and Its Application in Urine Samples | [10.1155/2020/8821181](https://doi.org/10.1155/2020/8821181) | Rechecked |
 | 2018 | The Pesticide Exposure of People Living in Agricultural Community, Northern Thailand | [10.1155/2018/4168034](https://doi.org/10.1155/2018/4168034) | Rechecked |
+
+
+Publication approval: On 14 October 2026, the researcher reviewed the revised content and explicitly authorized publication. All 40 verified journal records are now approved for production. Earlier draft-status descriptions above document the pre-approval review.

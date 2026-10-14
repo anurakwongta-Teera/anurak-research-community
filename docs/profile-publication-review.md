@@ -35,3 +35,6 @@ All 40 verified records now remain reviewStatus: draft. Standard production buil
 ## Expanded bibliography audit
 
 The subsequent ResearchGate/Crossref reconciliation adds 14 journal articles (40 total), excludes two preprints and consolidates repeated works. See [the full inventory and exclusions](publication-reconciliation.md). The audit also fixed the original files whose approved frontmatter contradicted the draft workflow described above.
+
+
+Publication approval: On 14 October 2026, the researcher reviewed the revised content and explicitly authorized publication. All 40 verified journal records are now approved for production. Earlier draft-status descriptions above document the pre-approval review.
