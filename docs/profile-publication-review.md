@@ -30,4 +30,8 @@ The Philippine Journal of Science DOI record does not supply pages/article numbe
 
 ## Content workflow
 
-All 26 new records remain reviewStatus: draft. Standard production builds exclude them. Run npm run build:preview, then npm run preview to inspect unapproved non-placeholder records locally; a review banner labels this mode. The example placeholder draft remains hidden. No workflow uses preview mode. After the researcher approves, change the reviewed records to approved, rerun production checks, then merge only with authorization.
+All 40 verified records now remain reviewStatus: draft. Standard production builds exclude them. Run npm run build:preview, then npm run preview to inspect unapproved non-placeholder records locally; a review banner labels this mode. The example placeholder draft remains hidden. No workflow uses preview mode. After the researcher approves, change the reviewed records to approved, rerun production checks, then merge only with authorization.
+
+## Expanded bibliography audit
+
+The subsequent ResearchGate/Crossref reconciliation adds 14 journal articles (40 total), excludes two preprints and consolidates repeated works. See [the full inventory and exclusions](publication-reconciliation.md). The audit also fixed the original files whose approved frontmatter contradicted the draft workflow described above.

@@ -26,7 +26,7 @@ Output is in `dist/`. No database, paid API, authentication, analytics, or runti
 
 Eight main pages, collection detail pages, and a 404 page. Shared layout/components live in `src/layouts` and `src/components`; styles in `src/styles`; page copy in `src/data`; identity in `src/lib/site.ts`; Markdown in `src/content`; schemas in `src/content.config.ts`.
 
-See [CONTENT_GUIDE.md](CONTENT_GUIDE.md) for templates, review workflow, and Thai expansion. Drafts are excluded from the website but are not private in a public repository. A CV-based biography and 26 verified bibliographic drafts are prepared for researcher review. Team photographs/profiles and public contact details remain pending.
+See [CONTENT_GUIDE.md](CONTENT_GUIDE.md) for templates, review workflow, and Thai expansion. Drafts are excluded from the website but are not private in a public repository. A CV-based biography and 40 verified bibliographic drafts are prepared for researcher review. Team photographs/profiles and public contact details remain pending.
 
 ## GitHub Pages
 
