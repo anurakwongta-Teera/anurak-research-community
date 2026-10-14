@@ -1,0 +1,100 @@
+---
+import { profile } from '../data/profile';
+import { url } from '../lib/site';
+---
+
+<div class="profile-layout">
+  <aside class="profile-aside">
+    <div class="profile-monogram" aria-hidden="true">
+      AW
+    </div>
+    <p class="eyebrow">RESEARCHER PROFILE</p>
+    <h2>
+      {profile.name}
+      <span>{profile.credentials}</span>
+    </h2>
+    <p class="profile-role">{profile.role}</p>
+    <p>
+      {profile.institution}
+      <br />
+      {profile.location}
+    </p>
+    <a class="orcid-link" href={`https://orcid.org/${profile.orcid}`}>
+      ORCID <span>{profile.orcid} ↗</span>
+    </a>
+    <a class="button" href={url('publications/')}>
+      Explore publications →
+    </a>
+    <p class="portrait-note">Profile photograph forthcoming.</p>
+  </aside>
+  <div class="profile-main">
+    <section aria-labelledby="bio-heading">
+      <p class="eyebrow">ABOUT ME</p>
+      <h2 id="bio-heading">
+        Connecting laboratory science
+        <br />
+        with community health.
+      </h2>
+      {profile.biography.map((text) => (
+        <p>{text}</p>
+      ))}
+    </section>
+    <section aria-labelledby="interests-heading">
+      <h2 id="interests-heading">Research interests</h2>
+      <div class="profile-interests">
+        {profile.interests.map(([title, text], i) => (
+          <article>
+            <span class="eyebrow">0{i + 1}</span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+    <div class="profile-history">
+      <section aria-labelledby="education-heading">
+        <h2 id="education-heading">Education</h2>
+        <ol class="profile-timeline">
+          {profile.education.map((item) => (
+            <li>
+              <span>{item.year}</span>
+              <h3>{item.degree}</h3>
+              <p>{item.institution}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+      <section aria-labelledby="appointments-heading">
+        <h2 id="appointments-heading">Academic appointments</h2>
+        <ol class="profile-timeline">
+          {profile.appointments.map((item) => (
+            <li>
+              <span>{item.period}</span>
+              <h3>{item.title}</h3>
+              <p>{item.institution}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </div>
+    <section aria-labelledby="service-heading">
+      <h2 id="service-heading">Professional service</h2>
+      <ul class="profile-service">
+        {profile.service.map((text) => (
+          <li>{text}</li>
+        ))}
+      </ul>
+    </section>
+    <section class="profile-team" aria-labelledby="team-heading">
+      <p class="eyebrow">PEOPLE & COLLABORATION</p>
+      <h2 id="team-heading">About the team</h2>
+      <p>
+        Team profiles will be added when names, roles, biographies, and
+        photographs are approved for public use.
+      </p>
+      <a class="text-link" href={url('contact/')}>
+        Contact & collaboration →
+      </a>
+    </section>
+  </div>
+</div>

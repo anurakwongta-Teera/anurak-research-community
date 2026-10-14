@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AboutProfile from '../components/AboutProfile.astro';
+import PublicationList from '../components/PublicationList.astro';
+import '../styles/profile.css';
 import Card from '../components/Card.astro';
 import { pages, listings } from '../data/pages';
 import { entries } from '../lib/content';
@@ -24,6 +27,10 @@ const items = listing ? await entries(listing.collection) : [];
     <p class="lede">{info.description}</p>
   </section>
   <section class="shell section page-content">
+    {key === 'about' && <AboutProfile />}
+    {key === 'publications' && items.length > 0 && (
+      <PublicationList items={items} />
+    )}
     {key === 'laboratory' && (
       <>
         <div class="three-grid stages">
@@ -59,6 +66,7 @@ const items = listing ? await entries(listing.collection) : [];
       </>
     )}
     {listing &&
+      (key !== 'publications' || items.length === 0) &&
       (items.length ? (
         <>
           <div class="section-heading">
@@ -97,7 +105,7 @@ const items = listing ? await entries(listing.collection) : [];
           </a>
         </div>
       ))}
-    {page && (
+    {page && key !== 'about' && (
       <div class="three-grid info-blocks">
         {page.blocks.map(([heading, body]) => (
           <article>
@@ -105,16 +113,6 @@ const items = listing ? await entries(listing.collection) : [];
             <p>{body}</p>
           </article>
         ))}
-      </div>
-    )}
-    {key === 'about' && (
-      <div class="notice">
-        <strong>Profile photographs forthcoming</strong>
-        <p>
-          Clearly labeled temporary stock photographs illustrate this first
-          version. Researcher and team photographs will be added with
-          permission.
-        </p>
       </div>
     )}
     {key === 'contact' && (

@@ -19,7 +19,17 @@ const collection = (name: string, schema = common) =>
 export const collections = {
   projects: collection('projects'),
   news: collection('news'),
-  publications: collection('publications'),
+  publications: collection(
+    'publications',
+    common.extend({
+      publicationYear: z.number().int().optional(),
+      authors: z.array(z.string()).optional(),
+      journal: z.string().optional(),
+      doi: z.string().optional(),
+      bibliographicDetails: z.string().optional(),
+      publicationNote: z.string().optional(),
+    }),
+  ),
   innovation: defineCollection({
     loader: glob({ pattern: '**/*.md', base: './src/content/innovation' }),
     schema: common
