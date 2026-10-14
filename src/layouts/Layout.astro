@@ -27,6 +27,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
   </head>
   <body>
+    {import.meta.env.CONTENT_PREVIEW === '1' && (
+      <aside style="padding:9px 18px;background:#fff2d7;color:#654815;text-align:center;font:13px Arial,sans-serif">
+        Review preview · Unapproved content · Not published
+      </aside>
+    )}
     <a class="skip" href="#main">
       Skip to content
     </a>

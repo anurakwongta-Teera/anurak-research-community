@@ -26,7 +26,7 @@ Output is in `dist/`. No database, paid API, authentication, analytics, or runti
 
 Eight main pages, collection detail pages, and a 404 page. Shared layout/components live in `src/layouts` and `src/components`; styles in `src/styles`; page copy in `src/data`; identity in `src/lib/site.ts`; Markdown in `src/content`; schemas in `src/content.config.ts`.
 
-See [CONTENT_GUIDE.md](CONTENT_GUIDE.md) for templates, review workflow, and Thai expansion. Drafts are excluded from the website but are not private in a public repository. Verified publications, biography/team details, and contact details must be supplied by the researcher.
+See [CONTENT_GUIDE.md](CONTENT_GUIDE.md) for templates, review workflow, and Thai expansion. Drafts are excluded from the website but are not private in a public repository. A CV-based biography and 40 verified bibliographic drafts are prepared for researcher review. Team photographs/profiles and public contact details remain pending.
 
 ## GitHub Pages
 
@@ -52,3 +52,8 @@ Configuration follows the [Astro GitHub Pages guide](https://docs.astro.build/en
 Forest green, deep navy, white, sans-serif headings, a panoramic photographic hero, four equal focus areas, three project cards beside a compact three-row news column, and a dark mountain-silhouette footer. Includes semantic landmarks, skip link, visible keyboard focus, native mobile menu, active navigation, canonical metadata, and a small local search dialog. Search indexes only approved English pages/entries at build time; it uses no API or backend. EN | TH is an indicator: Thai content is explicitly planned, not an active translation switch. Existing Astro routes and collection schemas are preserved; a third sample news entry has been added. English is complete; Thai architecture is prepared, with translations/routes deferred.
 
 `npm run check` validates Astro and TypeScript; `npm run build` validates collection schemas; `npm test` checks all required routes, internal links/assets, headings, language, and draft exclusion.
+
+To review unapproved bibliography entries locally: `npm run build:preview`, then `npm run preview`. This mode shows a review banner and is never used by GitHub Actions. Standard production builds exclude drafts. See `docs/profile-publication-review.md` for source checks.
+
+
+Publication approval: On 14 October 2026, the researcher reviewed the revised content and explicitly authorized publication. All 40 verified journal records are now approved for production. Earlier draft-status descriptions above document the pre-approval review.

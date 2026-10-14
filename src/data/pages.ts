@@ -2,23 +2,10 @@ export const pages = {
   about: {
     title: 'About me & team',
     eyebrow: 'PEOPLE BEHIND THE QUESTIONS',
-    intro: 'Research grounded in practical questions and human context.',
+    intro: 'Anurak Wongta, PhD, MT',
     description:
-      'Anurak Wongta is an academic researcher and research project leader working across environmental and occupational health, community-based research, and practical laboratory innovation.',
-    blocks: [
-      [
-        'A connected research perspective',
-        'Bringing laboratory methods, health measurement, and community perspectives into the same conversation is central to this research identity.',
-      ],
-      [
-        'Research profile',
-        'Profile details pending verification: institutional affiliation, qualifications, appointments, and professional biography will be added after researcher review.',
-      ],
-      [
-        'The team',
-        'Team profiles are awaiting approved names, roles, biographies, and photographs. No collaborators or institutional relationships are implied by this placeholder.',
-      ],
-    ],
+      'Assistant Professor · Research Institute for Health Sciences, Chiang Mai University, Thailand.',
+    blocks: [],
   },
   community: {
     title: 'Community engagement',
@@ -86,7 +73,7 @@ export const listings = {
     eyebrow: 'EVIDENCE & SCHOLARSHIP',
     intro: 'A record of research, carefully documented.',
     description:
-      'Verified citations, publication links, and accessible summaries will be collected here. No publications have yet been supplied for this website.',
+      'Research publications spanning environmental and occupational health, respiratory health, and practical laboratory methods.',
   },
   news: {
     collection: 'news',

@@ -1,0 +1,51 @@
+---
+import { url } from '../lib/site';
+const { items } = Astro.props;
+const years = [
+  ...new Set<number>(items.map((entry: any) => entry.data.publicationYear)),
+].sort((a, b) => b - a);
+---
+
+<div class="publication-intro">
+  <p>
+    Bibliographic records cross-checked against{' '}
+    <a href="https://orcid.org/0000-0003-0308-8477">ORCID</a> and
+    publisher-deposited DOI metadata. Last checked: 14 October 2026. This is a
+    curated record, not a claim of a complete publication history.
+  </p>
+  <nav aria-label="Publication years">
+    {years.map((year) => (
+      <a href={`#year-${year}`}>{year}</a>
+    ))}
+  </nav>
+</div>
+{years.map((year) => (
+  <section class="publication-year" aria-labelledby={`year-${year}`}>
+    <h2 id={`year-${year}`}>{year}</h2>
+    <ol class="publication-list">
+      {items
+        .filter((e: any) => e.data.publicationYear === year)
+        .map((entry: any) => (
+          <li>
+            <p class="eyebrow">{entry.data.journal}</p>
+            <h3>
+              <a href={url(`publications/${entry.id}/`)}>{entry.data.title}</a>
+            </h3>
+            <p class="publication-authors">{entry.data.authors.join('; ')}</p>
+            <p class="publication-citation">
+              {entry.data.bibliographicDetails}
+            </p>
+            {entry.data.publicationNote && (
+              <p class="publication-note">{entry.data.publicationNote}</p>
+            )}
+            <div class="publication-links">
+              <a href={`https://doi.org/${entry.data.doi}`}>Read article ↗</a>
+              <a href={url(`publications/${entry.id}/`)}>
+                Citation & sources →
+              </a>
+            </div>
+          </li>
+        ))}
+    </ol>
+  </section>
+))}

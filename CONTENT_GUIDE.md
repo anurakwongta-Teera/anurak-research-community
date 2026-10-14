@@ -14,6 +14,7 @@ The review flag is editorial metadata, not access control. Enforce approval with
 - `src/content/publications/*.md`: verified citations
 - `src/content/news/*.md`: news and activities
 - `src/data/pages.ts`: static page text
+- `src/data/profile.ts`: biography, qualifications, appointments, and professional service
 - `src/lib/site.ts`: identity, navigation, and verified email
 
 Use stable lowercase hyphenated filenames: they become URLs. Source content is independent of layouts.
@@ -44,3 +45,9 @@ V1 samples use `placeholder: true` and are approved for display as examples only
 ## Thai expansion
 
 Astro declares `en` (unprefixed) and `th`; collections have a validated locale field. Current routes display English only. Add translated UI dictionaries and `/th/` routes filtering Thai entries, update HTML language and alternate-language links, and publish translations only after review. A language switcher is intentionally deferred until translations exist.
+
+## Reviewing publication drafts locally
+
+Use `npm run build:preview` followed by `npm run preview` to include unapproved non-placeholder entries in a clearly labeled local preview. Production `npm run build` excludes these records. Never deploy preview output. After researcher approval, set only the reviewed records to `reviewStatus: approved` and build normally.
+
+Publication frontmatter additionally uses `publicationYear`, `authors` (ordered list), `journal`, `doi` (bare DOI), `bibliographicDetails`, and optional `publicationNote`. Keep verified source links in the body. Use a year when an exact date is not verified; do not fabricate January 1 dates. Entries group by year, newest first.
